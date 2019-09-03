@@ -6,6 +6,16 @@ import HomePage from './Components/homePage.js'
 
 
 export default class App extends React.Component{
+
+  constructor(){
+    super();
+    this.state={
+      page: '',
+    }
+  }
+
+  
+  
   render(){
     return (
       <div>
