@@ -6,7 +6,7 @@ let ftbServers = [
             "Ultimate Reloaded v1.8.0",
             "https://www.feed-the-beast.com/projects/ftb-ultimate-reloaded/files/2746965"
         ],
-        voteLinks:["link1",
+        voteLinks:["https://minecraft-mp.com/server/227841/vote/",
         "link2"
         ]
     },
@@ -17,8 +17,8 @@ let ftbServers = [
             "Infinity Evolved v3.1.0",
             "https://www.feed-the-beast.com/projects/ftb-infinity-evolved/files/2731544"
         ],
-        voteLinks:["link1",
-        "link2"
+        voteLinks:["https://minecraft-mp.com/server/179220/vote/",
+        "https://ftbservers.com/server/153BIFTF/vote"
         ]
     },
 ]
