@@ -39,7 +39,7 @@ export default class App extends React.Component{
     selection.addRange(range);
     try {
       document.execCommand('copy');
-      alert('text copied');
+      alert(`${ElementId} copied to clipboard`);
     }
     catch (err) {
       alert('unable to copy text');
@@ -61,6 +61,7 @@ export default class App extends React.Component{
           <ServerList copyValue={this.copyToClipboard}/>
           <VotingList/>
           <h1>Discord</h1>
+          <iframe  title="discordFrame" src="https://discordapp.com/widget?id=226856884731248640&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
       </div>
     </div>
     );
