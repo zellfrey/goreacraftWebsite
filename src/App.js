@@ -26,7 +26,25 @@ export default class App extends React.Component{
       fetch(statInfinity).then(resp => resp.json()).then(serverState => this.setState({infinityPing: serverState}))
       fetch(statUltimate).then(resp => resp.json()).then(serverState => this.setState({ultimatePing: serverState}))
   }
-  
+
+  copyToClipboard = (e) => {
+    // Clear any current selection
+    console.log(e.target.getAttribute('id'))
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    const ElementId = e.target.getAttribute('id')
+    // Select paragraph
+    const range = document.createRange();
+    range.selectNodeContents(document.getElementById(ElementId));
+    selection.addRange(range);
+    try {
+      document.execCommand('copy');
+      alert('text copied');
+    }
+    catch (err) {
+      alert('unable to copy text');
+    }
+  }
   
   render(){
     return (
@@ -40,10 +58,9 @@ export default class App extends React.Component{
             <HomePage/>
           </div>
         <div className="navBarRight">
-          <ServerList/>
+          <ServerList copyValue={this.copyToClipboard}/>
           <VotingList/>
           <h1>Discord</h1>
-          {this.getInfinity}
       </div>
     </div>
     );

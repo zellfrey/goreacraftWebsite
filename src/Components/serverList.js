@@ -1,7 +1,7 @@
 import React from 'react';
 import serverData from '../data/serverNavData.js';
 
-const serverList = () =>{
+const serverList = (props) =>{
 
     return (
         <div className='serverList'>
@@ -11,7 +11,7 @@ const serverList = () =>{
                 return (
                     <div className='serverCard' key={idx}>
                         <h2>{ftb.modPack}</h2>
-                        <ul>{ftb.serverIP}</ul>
+                        <ul onClick={props.copyValue} value={ftb.serverIP} id={ftb.serverIP}>{ftb.serverIP}</ul>
                         <a href={ftb.packAddress[1]} target="_blank" rel="noopener noreferrer" >{ftb.packAddress[0]}</a>
                     </div>)
                 })
