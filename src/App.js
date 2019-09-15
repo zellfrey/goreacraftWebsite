@@ -2,6 +2,7 @@ import React from 'react';
 import VotingList from './Components/votingList.js'
 import ServerList from './Components/serverList.js'
 import HomePage from './Components/homePage.js'
+import './Styles/Navbar.css'
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -49,6 +50,14 @@ export default class App extends React.Component{
   render(){
     return (
       <div>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown</button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
         <div className="navBarleft">
           <h1>Gallery</h1>
           <h1>Staff</h1>
@@ -60,9 +69,10 @@ export default class App extends React.Component{
         <div className="navBarRight">
           <ServerList copyValue={this.copyToClipboard}/>
           <VotingList/>
-          <h1>Discord</h1>
+      <h2>Discord</h2>
           <iframe  title="discordFrame" src="https://discordapp.com/widget?id=226856884731248640&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
       </div>
+      
     </div>
     );
   }

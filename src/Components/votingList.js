@@ -1,6 +1,6 @@
 import React from 'react';
 import serverData from '../data/serverNavData.js';
-
+import '../Styles/Navbar.css'
 const votingList = () =>{
 
     function getHostName(url) {
