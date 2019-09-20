@@ -7,7 +7,7 @@ let ftbServers = [
             "https://www.feed-the-beast.com/projects/ftb-ultimate-reloaded/files/2746965"
         ],
         voteLinks:["https://minecraft-mp.com/server/227841/vote/",
-        "link2"
+        "https://ftbservers.com/server/EMWd10Iw/vote"
         ]
     },
     {
