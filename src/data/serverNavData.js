@@ -8,7 +8,8 @@ let ftbServers = [
         ],
         voteLinks:["https://minecraft-mp.com/server/227841/vote/",
         "https://ftbservers.com/server/EMWd10Iw/vote"
-        ]
+        ],
+        visible: true,
     },
     {
         modPack: "FTB Infinity Evolved",
@@ -19,7 +20,8 @@ let ftbServers = [
         ],
         voteLinks:["https://minecraft-mp.com/server/179220/vote/",
         "https://ftbservers.com/server/153BIFTF/vote"
-        ]
+        ],
+        visible: true,
     },
 ]
 

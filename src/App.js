@@ -2,7 +2,8 @@ import React from 'react';
 import VotingList from './Components/votingList.js'
 import ServerList from './Components/serverList.js'
 import HomePage from './Components/homePage.js'
-// import './Styles/Navbar.css'
+import DiscordWidget from './Components/DiscordWidget'
+import './Styles/MainNavBar.css'
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -61,8 +62,7 @@ export default class App extends React.Component{
         <div className="navBarRight">
           <ServerList copyValue={this.copyToClipboard}/>
           <VotingList/>
-      <h2>Discord</h2>
-          <iframe  title="discordFrame" src="https://discordapp.com/widget?id=226856884731248640&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+          <DiscordWidget/>
       </div>
       
     </div>

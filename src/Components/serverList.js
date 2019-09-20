@@ -8,7 +8,7 @@ const ServerList = (props) =>{
             <h2>Servers</h2>
             {
             serverData.ftbServers.map((ftb, idx)=>{
-                return (
+                return ftb.visible ? (
                     <ul className='voteCard' key={idx}>
                         <li>{ftb.modPack}
                         <ul id='serverInfo'>
@@ -16,7 +16,7 @@ const ServerList = (props) =>{
                             <li><a href={ftb.packAddress[1]} target="_blank" rel="noopener noreferrer" >{ftb.packAddress[0]}</a></li>
                         </ul>
                         </li>
-                    </ul>)
+                    </ul>) : null
                 })
             }
         </div>

@@ -20,7 +20,7 @@ const VotingList = () =>{
             <h2>Vote</h2>
             {
             serverData.ftbServers.map((ftb, idx)=>{
-                return (
+                return ftb.visible ? (
                     <ul className='voteCard' key={idx}>
                         <li>{ftb.modPack}
                         <ul id='serverInfo'>
@@ -28,7 +28,7 @@ const VotingList = () =>{
                             <li><a href={ftb.voteLinks[1]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.voteLinks[1])}</a></li>
                         </ul>
                         </li>  
-                    </ul>)
+                    </ul>) : null
                 })
             }  
         </div>
