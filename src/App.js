@@ -1,9 +1,10 @@
 import React from 'react';
 import VotingList from './Components/votingList.js'
-import ServerList from './Components/serverList.js'
+// import ServerList from './Components/serverList.js'
 import HomePage from './Components/homePage.js'
-import DiscordWidget from './Components/DiscordWidget'
+// import DiscordWidget from './Components/DiscordWidget'
 import './Styles/MainNavBar.css'
+
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -60,9 +61,9 @@ export default class App extends React.Component{
             <HomePage/>
           </div>
         <div className="navBarRight">
-          <ServerList copyValue={this.copyToClipboard}/>
+          {/* <ServerList copyValue={this.copyToClipboard}/> */}
           <VotingList/>
-          <DiscordWidget/>
+          {/* <DiscordWidget/> */}
       </div>
       
     </div>

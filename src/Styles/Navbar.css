@@ -1,4 +1,4 @@
-
+/* 
 
 .votingNav{
   margin:0;
@@ -52,7 +52,7 @@ ul {
     position: absolute;
   transition: all 0.5s ease;
   right: -162px;
-  top: 0px;
+  top: 33%;
   display: none;
 }
 
@@ -61,4 +61,4 @@ ul li ul:hover {
   visibility: visible;
   opacity: 1;
   display: block;
-}
+} */
