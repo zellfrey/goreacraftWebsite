@@ -4,7 +4,7 @@ import ServerList from './Components/serverList.js';
 import HomePage from './Components/homePage.js';
 import DiscordWidget from './Components/DiscordWidget.js';
 import './Styles/MainNavBar.css';
-
+import articlesData from './data/dummyArticleData.js';
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -21,6 +21,7 @@ export default class App extends React.Component{
       userMC: null,
       infinityPing: null,
       ultimatePing: null,
+      articlesArray: articlesData.articles,
     }
   }
 
@@ -28,6 +29,7 @@ export default class App extends React.Component{
       fetch(userName).then(resp => resp.json()).then(status => this.setState({userMC: status}))
       fetch(statInfinity).then(resp => resp.json()).then(serverState => this.setState({infinityPing: serverState}))
       fetch(statUltimate).then(resp => resp.json()).then(serverState => this.setState({ultimatePing: serverState}))
+      // this.setState({articlesArray: articlesData.articles})
   }
 
   copyToClipboard = (e) => {
@@ -58,10 +60,10 @@ export default class App extends React.Component{
           <h1>Wiki</h1>
         </div>
           <div>
-            <HomePage/>
+            <HomePage articles={this.state.articlesArray}/>
           </div>
           <nav>
-            <ul class="nav">
+            <ul className="nav">
             <ServerList copyValue={this.copyToClipboard}/>
             <VotingList/>
             <DiscordWidget/>
