@@ -21,7 +21,7 @@ export default class App extends React.Component{
       userMC: null,
       infinityPing: null,
       ultimatePing: null,
-      articlesArray: articlesData.articles,
+      articlesArray: articlesData.articles.filter(a => a.visible === true),
     }
   }
 
@@ -29,7 +29,6 @@ export default class App extends React.Component{
       fetch(userName).then(resp => resp.json()).then(status => this.setState({userMC: status}))
       fetch(statInfinity).then(resp => resp.json()).then(serverState => this.setState({infinityPing: serverState}))
       fetch(statUltimate).then(resp => resp.json()).then(serverState => this.setState({ultimatePing: serverState}))
-      // this.setState({articlesArray: articlesData.articles})
   }
 
   copyToClipboard = (e) => {
@@ -56,7 +55,7 @@ export default class App extends React.Component{
       <div>
         <div className="navBarleft">
           <h1>Gallery</h1>
-          <h1>Staff</h1>
+          <h1>Donate</h1>
           <h1>Wiki</h1>
         </div>
           <div>

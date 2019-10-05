@@ -21,11 +21,11 @@ export default class HomePage extends React.Component{
     let articleIndex = this.state.articlesArray.findIndex(a=> a == this.state.displayedArticle)
     let artArrayLength = this.state.articlesArray.length
     
-    if(num === -1 && articleIndex === 0){
+    if(num <= -1 && articleIndex === 0){
       console.log('already at latest')
       return null
 
-    }else if( num === 1 && articleIndex === artArrayLength-1){
+    }else if( num >= 1 && articleIndex === artArrayLength-1){
       console.log('already at oldest')
       return null
     }
