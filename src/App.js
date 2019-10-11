@@ -3,8 +3,10 @@ import VotingList from './Components/votingList.js';
 import ServerList from './Components/serverList.js';
 import HomePage from './Components/homePage.js';
 import DiscordWidget from './Components/DiscordWidget.js';
+import ServerWiki from './Components/ServerWiki.js'
 import './Styles/MainNavBar.css';
 import articlesData from './data/dummyArticleData.js';
+import serverRulesData from './data/serverRules.json'
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -21,6 +23,7 @@ export default class App extends React.Component{
       userMC: null,
       infinityPing: null,
       ultimatePing: null,
+      rules: serverRulesData,
       articlesArray: articlesData.articles.filter(a => a.visible === true),
     }
   }
@@ -56,7 +59,7 @@ export default class App extends React.Component{
         <div className="navBarleft">
           <h1>Gallery</h1>
           <h1>Donate</h1>
-          <h1>Wiki</h1>
+          <ServerWiki rules={this.state.rules}/>
         </div>
           <div>
             <HomePage articles={this.state.articlesArray}/>
