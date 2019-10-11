@@ -27,7 +27,9 @@ If all steps are followed. You should see a JSON file added to the '/serverRules
 folder.
 `
 
-const start = `Starting scan of folders for relevant files`
+const start = `Starting scan of folders for relevant files
+
+`
 
 const help = `
 List of commands:

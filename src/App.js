@@ -6,7 +6,7 @@ import DiscordWidget from './Components/DiscordWidget.js';
 import ServerWiki from './Components/ServerWiki.js'
 import './Styles/MainNavBar.css';
 import articlesData from './data/dummyArticleData.js';
-import serverRulesData from './data/URrules.json'
+import serverRulesData from './data/serverRules.json'
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
