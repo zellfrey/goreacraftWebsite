@@ -59,7 +59,7 @@ export default class App extends React.Component{
         <div className="navBarleft">
           <h1>Gallery</h1>
           <h1>Donate</h1>
-          <ServerWiki/>
+          <ServerWiki rules={this.state.rules}/>
         </div>
           <div>
             <HomePage articles={this.state.articlesArray}/>

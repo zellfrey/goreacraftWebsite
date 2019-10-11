@@ -7,6 +7,7 @@ export default class ServerWiki extends React.Component{
   constructor(props){
     super(props);
     this.state={
+      rules: this.props.rules
     }
   }
 
@@ -14,7 +15,7 @@ export default class ServerWiki extends React.Component{
     return (
     <div >
         <h1>Wiki</h1>
-        <ServerRules/>
+        <ServerRules modPackRules={this.state.rules}/>
     </div>
     );
   }
