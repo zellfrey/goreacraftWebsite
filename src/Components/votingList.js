@@ -1,5 +1,5 @@
 import React from 'react';
-import serverData from '../data/serverNavData.js';
+import serverData from '../data/MCServerData/serverNavData.js';
 import '../Styles/MainNavBar.css'
 
 

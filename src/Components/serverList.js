@@ -1,5 +1,5 @@
 import React from 'react';
-import serverData from '../data/serverNavData.js';
+import serverData from '../data/MCServerData/serverNavData.js';
 const ServerList = (props) =>{
 
     return (
