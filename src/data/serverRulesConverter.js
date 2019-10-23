@@ -1,5 +1,5 @@
-const cliTxt = require ('./converterTextHelp.js');
-const serverList = require('./serverNavData.js').ftbServers
+const CLI_TXT = require ('./converterTextHelp.js');
+const SERVER_LIST = require('./serverNavData.js').ftbServers
 const fs = require('fs')
 const path = require('path');
 const ServerRulesFldr = "./serverRules/";
@@ -12,7 +12,7 @@ cliInputCheck(process.argv)
 
 function cliInputCheck(args){
     if(args.length !== 3){
-        console.log(cliTxt.invalidCmd)
+        console.log(CLI_TXT.invalidCmd)
         process.exit(9);
     }
     cmdCheck(args[2])
@@ -21,21 +21,22 @@ function cmdCheck(cmd){
     switch(cmd) {
         case "h":
         case "help":
-            console.log(cliTxt.help)
+            console.log(CLI_TXT.help)
             process.exit(0);
             break;
         case "start":
         case "s":
-            console.log(cliTxt.start)
+            console.log(CLI_TXT.start)
             scanServerRulesFolder()
             break;
         case "docs":
         case "d":
-            console.log(cliTxt.docs)
+            console.log(CLI_TXT.docs)
             process.exit(0);
             break;
         default:
             console.log('not a valid command')
+            process.exit(0)
       }
 }
 
@@ -46,10 +47,10 @@ function scanServerRulesFolder(){
 
     serverRulesData.map(file=>console.log(`${file} == valid file`))
 
-    return checkRelativeServer(serverRulesData,serverList)
+    return checkRelativeServer(serverRulesData)
 };
 
-function checkRelativeServer (fileListArray,serverList){
+function checkRelativeServer (fileListArray){
     let txtList = []
 
     for(let i = 0; i < fileListArray.length; i++){
@@ -57,7 +58,7 @@ function checkRelativeServer (fileListArray,serverList){
         if(fileListArray[i].includes("rules")){
             serverCheckString = fileListArray[i].replace("rules.txt","")
 
-            if(serverList.find(ftb=> ftb.modPack.includes(serverCheckString))){
+            if(SERVER_LIST.find(ftb=> ftb.modPack.includes(serverCheckString))){
                 console.log(`Found ${serverCheckString} in Server list.\nContinuing with conversion of ${fileListArray[i]}`)
                 txtList.push(fileListArray[i])
             }
@@ -66,25 +67,29 @@ function checkRelativeServer (fileListArray,serverList){
             }
         }
     }
+    if(txtList.length === 0){
+        console.log(`There are no files that relate to the server list.\nPlease check the name of files.\nProgramme shutting down`)
+        return process.exit(0)
+    }else{
+        console.log(`${txtList} files remaining. Moving to conversion`)
 
-    console.log(`${txtList} files remaining. Moving to conversion`)
-    return collectDataSet(txtList,rulesData,serverList)
+        return collectDataSet(txtList)
+    }
 }
 
 //Collect/Scrape Text files----------------------
-function collectDataSet(fileArray,dataList,serverList){
+function collectDataSet(fileArray){
     console.log(`looping through data: ${fileArray}`)
 
-    dataList = fileArray.map(file =>{
+    rulesData = fileArray.map(file =>{
         let serverCheckString = file.replace("rules.txt","")
-        let relatedServer = serverList.find(ftb=> ftb.modPack.includes(serverCheckString))
+        let relatedServer = SERVER_LIST.find(ftb=> ftb.modPack.includes(serverCheckString))
         let serverRulesObj = {
             modPack: relatedServer.modPack,
             rules: fs.readFileSync(ServerRulesFldr+file, { encoding: 'utf8' }),
         }
         return serverRulesObj
     })
-    rulesData = dataList
     return convertRulesToJSON(rulesData)
 }
 

@@ -18,7 +18,7 @@ export default class HomePage extends React.Component{
   }
 
   onClickNextArticle = (num) =>{
-    let articleIndex = this.state.articlesArray.findIndex(a=> a == this.state.displayedArticle)
+    let articleIndex = this.state.articlesArray.findIndex(a=> a === this.state.displayedArticle)
     let artArrayLength = this.state.articlesArray.length
     
     if(num <= -1 && articleIndex === 0){
