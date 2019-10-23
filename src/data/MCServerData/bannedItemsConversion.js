@@ -61,8 +61,7 @@ function collectDataSet(fileArray){
         return serverBannedItemsObj
     })
     bannedItemsData = dataList
-    // console.log(bannedItemsData)
-    // return writeDataToJSONFile(JSON.stringify(bannedItemsData))
+
     return convertRulesToJSON(bannedItemsData)
 }
 
@@ -72,7 +71,7 @@ function convertRulesToJSON(dataLists){
 
        bannedItemsData[i].bannedItemsFile= convertRulesToObjects(dataLists[i].bannedItemsFile)
     }
-   return bannedItemsData =  JSON.stringify(bannedItemsData)
+   return bannedItemsData =  JSON.stringify(bannedItemsData, null, '\t')
 }
 
 function convertRulesToObjects(jsonFile){
@@ -125,7 +124,7 @@ function convertRulesToObjects(jsonFile){
     }
     return bannedItemsArray
 }
-// console.log(bannedItemsData)
+console.log(bannedItemsData)
 writeDataToJSONFile(bannedItemsData)
 
 // Write JSON File -------------------
@@ -135,58 +134,13 @@ function writeDataToJSONFile(data){
         console.log('successfully converted to JSON format')
     })
 }
-// fs.writeFileSync(outputfile, JSON.stringify(obj, null, 2));
-
-
-// let bannedItemsArray =[
-//     {
-//         name: `${SourceMod} ${Name}`,
-//         restrictLvl: "BAN,RESTRICT,NONE",
-//         townyBypass: true,
-//         countBlock: true,
-//         Limit:[
-//             {
-//                 Default: 2,
-//                 VIP1: 3,
-//                 VIP2: 4,
-//             }
-//         ],
-//         reason: "Specific reason"
-//     },
-//     {
-//         name: `Towny bypass block`,
-//         restrictLvl: "Towny bypass",
-//     },
-//     {
-//         name: `World bypass`,
-//         restrictLvl: "RESTRICT",
-//         //Majority disabled in Overworld
-//     },
-//     {
-//         name: `Limited Placement`,
-//         restrictLvl: "Limited Placement",
-//         Limit:[
-//             {
-//                 Default: 2,
-//                 VIP1: 3,
-//                 VIP2: 4,
-//             }
-//         ],
-//         reason: "Most likely a reason is needed"
-//     },
-//     {
-//         name: `Banned Across the board`,
-//         restrictLvl: "BAN",
-//         reason: "Specific reason"
-//     },
-// ]
 
 /*
 Catergories:
     least ----> most
     towny bypass
-    Disabled in Overworld
     Limited Placement
+    Disabled in Overworld
     Banned/Non-obtainable
 
 */

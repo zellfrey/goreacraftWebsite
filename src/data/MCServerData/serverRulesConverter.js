@@ -98,7 +98,7 @@ function convertRulesToJSON(dataLists){
     for(let i = 0; i < dataLists.length; i++){
        rulesData[i].rules= convertRulesToObjects(dataLists[i].rules)
     }
-   return rulesData =  JSON.stringify(rulesData)
+   return rulesData =  JSON.stringify(rulesData, null, '\t')
 }
 
 function convertRulesToObjects(txt){
