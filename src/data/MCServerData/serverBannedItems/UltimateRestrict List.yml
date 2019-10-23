@@ -116,7 +116,7 @@ RAILCRAFT_BORE:
 #     Mini Reason: "&6Disabled in Overworld & End"
 COMPUTERCRAFT_TURTLE_EXPANDED:
     Name: Turtle
-    Source Mod: ComputerCraft
+    Source Mod: C
     Restrict Level: RESTRICT
     World Blacklist: true
     Worlds:
@@ -124,7 +124,7 @@ COMPUTERCRAFT_TURTLE_EXPANDED:
     Mini Reason: "&6Disabled in Overworld"
 COMPUTERCRAFT_TURTLE_ADVANCED:
     Name: Advanced Turtle
-    Source Mod: ComputerCraft
+    Source Mod: Computercraft
     Restrict Level: RESTRICT
     World Blacklist: true
     Worlds:
@@ -414,12 +414,12 @@ PROJECTREDFABRICATION_IC_CHIP:
     Restrict Level: BAN
     Mini Reason: "&cNon-Functional"
 "STEVESCARTS_CARTMODULE:49":
-    Name: StevesCarts Chunk Loader
+    Name: Steves Carts Chunk Loader
     Source Mod: StevesCarts
     Restrict Level: BAN
     Mini Reason: "&cChunk loading"
 PERIPHERALSPLUSONE_CHUNK_LOADER_UPGRADE:
-    Name: Chunk Loader Upgrade
+    Name: P+1 Chunk Loader Upgrade
     Source Mod: PeripheralsPlusOne
     Restrict Level: BAN
     Mini Reason: "&cChunk loading"
