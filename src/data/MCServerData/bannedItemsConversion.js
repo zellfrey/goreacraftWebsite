@@ -62,47 +62,75 @@ function collectDataSet(fileArray){
     })
     bannedItemsData = dataList
     // console.log(bannedItemsData)
+    // return writeDataToJSONFile(JSON.stringify(bannedItemsData))
     return convertRulesToJSON(bannedItemsData)
 }
 
 // Convert DataSet---------
 function convertRulesToJSON(dataLists){
     for(let i = 0; i < dataLists.length; i++){
-        // console.log(dataLists[i].bannedItemsFile)
+
        bannedItemsData[i].bannedItemsFile= convertRulesToObjects(dataLists[i].bannedItemsFile)
     }
-//    return bannedItemsData =  JSON.stringify(bannedItemsData)
+   return bannedItemsData =  JSON.stringify(bannedItemsData)
 }
 
 function convertRulesToObjects(jsonFile){
+    const colourCodeCheck = /&[0-9A-z]/g
     let bannedItemsArray = []
     let itemsArray = Object.keys(jsonFile)
     for(let i = 0; i < itemsArray.length; i++){
 
-        let itemTemplate = {
-            name: null,
-            restrictLvl: null,
-            townyBypass: null,
-            countBlock: null,
-            limit:[],
-            reason: null,
-        }
-
+        let bItemObject = {}
+        //removes example items from list
         if(jsonFile[itemsArray[i]] !== jsonFile.DEFAULT_VALUES){
-            if(!jsonFile[itemsArray[i]].Name.toLowerCase().includes("creative")){
-                itemTemplate.name = `${jsonFile[itemsArray[i]].Name}`
-                console.log(itemTemplate.name)
+
+            //checks whether an items is creative or used just for display(which is most likely creative)
+            if(!jsonFile[itemsArray[i]].Name.toLowerCase().includes("creative") && !jsonFile[itemsArray[i]].Name.toLowerCase().match(colourCodeCheck)){
+
+                bItemObject.name = `${jsonFile[itemsArray[i]].Name}`
+
+                //is item banned?
+                if(jsonFile[itemsArray[i]]["Restrict Level"] === "BAN"){
+                    bItemObject.restrictLvl = "Global Ban"
+
+                    //outlier cases checking for reason, gives clarity to user
+                    if(jsonFile[itemsArray[i]]["Mini Reason"]){
+                        bItemObject.reason = jsonFile[itemsArray[i]]["Mini Reason"].replace(colourCodeCheck, "")
+                    }
+                }
+
+                //is item world restricted?
+                else if(jsonFile[itemsArray[i]]["Restrict Level"] === "RESTRICT"){
+                    bItemObject.restrictLvl = "Disabled in Overworld"
+
+                    //outlier cases checking for reason, gives clarity to user
+                    if(jsonFile[itemsArray[i]]["Count Block"]){
+                        bItemObject.limit = jsonFile[itemsArray[i]].Limit
+                    }
+                }
+                //is item limited?
+                else if(jsonFile[itemsArray[i]]["Count Block"]){
+                    bItemObject.restrictLvl = "Limited Placement"
+                    bItemObject.limit = jsonFile[itemsArray[i]].Limit
+                }
+                //does it bypass towny?
+                else if(jsonFile[itemsArray[i]]["Check Towny"]){
+                    bItemObject.restrictLvl = "Towny Bypass"
+
+                }
+                bannedItemsArray.push(bItemObject)
             }
         }
     }
-
+    return bannedItemsArray
 }
 // console.log(bannedItemsData)
-// writeDataToJSONFile(JSON.stringify(bannedItemsData))
+writeDataToJSONFile(bannedItemsData)
 
 // Write JSON File -------------------
 function writeDataToJSONFile(data){
-    fs.writeFileSync('serverBannedItems.json', data, 'utf8', function(){
+    fs.writeFileSync('./serverDataJSON/serverBannedItems.json', data, 'utf8', function(){
         if(error) throw error;
         console.log('successfully converted to JSON format')
     })
