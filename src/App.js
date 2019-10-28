@@ -7,7 +7,8 @@ import ServerWiki from './Components/ServerWiki.js'
 import './Styles/MainNavBar.css';
 import articlesData from './data/dummyArticleData.js';
 import serverRulesData from './data/MCServerData/serverDataJSON/serverRules.json'
-// import serverBIData from './data/serverBannedItems.json'
+import serverBIData from './data/MCServerData/serverDataJSON/serverBannedItems.json'
+import serverStaffData from './data/MCServerData/serverDataJSON/serverStaffList.json'
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -24,8 +25,9 @@ export default class App extends React.Component{
       userMC: null,
       infinityPing: null,
       ultimatePing: null,
-      // bannedItems: serverBIData,
+      bannedItems: serverBIData,
       rules: serverRulesData,
+      staff: serverStaffData,
       articlesArray: articlesData.articles.filter(a => a.visible === true),
     }
   }
