@@ -1,0 +1,934 @@
+# Notes:
+# - Do not use spaces in "Source Mod:"
+
+# These are the values that will be used if they are not provided.
+DEFAULT_VALUES:
+    Name: ((Name will just use the full qualified item name provided.))
+    Source Mod: Unknown
+    Restrict Level: NONE
+    Log: false
+    Check Towny: false
+    # Radius is measured in chunks (mandated by Towny's API, sorry!)
+    Towny Radius: 0
+    # Change the Worlds: list from a whitelist to a blacklist
+    World Blacklist: false
+    Worlds: {}
+        # No - worlds whitelisted from RESTRICT
+    Count Block: false
+    Limit: {}
+        # No limits imposed.
+        # Only needed if Count Block = true
+    # Max 25 characters.
+    Mini Reason: No reason provided.
+    # Max 40 characters.
+    Short Reason: .MiniReason
+    # Max 2147483647 characters.
+    Long Reason: .ShortReason
+    Blocked Actions:
+        #True = do not allow, False = allowed as normal
+        - LEFT_CLICK: true
+        - RIGHT_CLICK: true
+    # If true, this block cannot be broken.
+    Prevent Break: false
+
+    
+
+
+    
+    
+# TEMPORARY ####################################################################
+
+# TOWNY BYPASS #################################################################
+EXTRAUTILITIES_ENDERQUARRY:
+    Name: Ender Quarry
+    Source Mod: EnderIO
+    MineTweaker Name: "ExtraUtilities:enderQuarry"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Count Block: true
+    Limit:
+        Default: 1
+        VIP0: 2
+        VIP1: 3
+        VIP2: 4
+        VIP3: 5
+    Mini Reason: Towny bypass
+BUILDCRAFTBUILDERS_MACHINEBLOCK:
+    Name: Buildcraft Quarry
+    Source Mod: Buildcraft
+    MineTweaker Name: "BuildCraft|Builders:machineBlock"
+    Restrict Level: BAN
+    World Blacklist: true
+    Worlds:
+        - world
+    Count Block: true
+    Mini Reason: Server performance
+"WITCHERY_INGREDIENT:62":
+    Name: Brew of Erosion
+    Source Mod: Witchery
+    MineTweaker Name: "witchery:ingredient"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 6
+    Mini Reason: Towny bypass
+MINEFACTORYRELOADED_SAFARINETLAUNCHER:
+    Name: Safari Net Launcher
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:safarinet.launcher"
+    Restrict Level: NONE
+    
+    Check Towny: true
+    Towny Radius: 6
+    Mini Reason: Towny bypass
+"BOTANIA_LENS:7":
+    Name: Mana Lens (Bore)
+    Source Mod: Botania
+    MineTweaker Name: "Botania:lens"
+    Restrict Level: RESTRICT
+    
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Bypasses Towny.
+BOTANIA_LAPUTASHARD:
+    Name: Shard of Laputa
+    Source Mod: Botania
+    MineTweaker Name: "Botania:laputaShard"
+    Restrict Level: RESTRICT
+    
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Bypasses Towny.
+BOTANIA_MANABOMB:
+    Name: Manastorm Charge
+    Source Mod: Botania
+    MineTweaker Name: "Botania:manaBomb"
+    Restrict Level: RESTRICT
+    
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Bypasses Towny.
+    Short Reason: Generates towny-bypassing explosions.
+BOTANIA_THORNCHAKRAM:
+    Name: Flare/Thorn Chakram
+    Source Mod: Botania
+    MineTweaker Name: "Botania:thornChakram"
+    Restrict Level: RESTRICT
+    
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Bypasses Towny.
+    Short Reason: Damages players through PvP restriction.
+THERMALEXPANSION_FLORB:
+    Name: Florb
+    Source Mod: ThermalExpansion.
+    MineTweaker Name: "ThermalExpansion:florb"
+    Restrict Level: NONE
+    
+    Check Towny: true
+    Towny Radius: 10
+    Mini Reason: Towny bypass
+RFTOOLS_BUILDERBLOCK:
+    Name: Builder Block (RFT)
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:builderBlock"
+    Restrict Level: RESTRICT
+    Count Block: true
+    Limit:
+        Default: 1
+        VIP0: 1
+        VIP1: 2
+        VIP2: 3
+        VIP3: 3
+    World Blacklist: true
+    Worlds:
+        - world
+        - DIM1
+    Mini Reason: Towny bypass
+TCONSTRUCT_EXPLOSIVESLIME:
+    Name: SDX
+    Source Mod: Tinkers'Construct
+    MineTweaker Name: "TConstruct:explosive.slime"
+    Restrict Level: NONE
+    
+    Check Towny: true
+    Towny Radius: 10
+    Mini Reason: Towny bypass
+ENDERTECH_ENDERTECHEXCHANGER:
+    Name: Block Exchanger
+    Source Mod: EnderTech
+    MineTweaker Name: "EnderTech:endertech.exchanger"
+    Restrict Level: NONE
+    
+    Check Towny: true
+    Towny Radius: 5
+    Mini Reason: Towny bypass
+CHISEL_SMASHINGROCK:
+    Name: Smashing Rock
+    Source Mod: Chisel
+    MineTweaker Name: "chisel:smashingrock"
+    Restrict Level: NONE
+    
+    Check Towny: true
+    Towny Radius: 10
+    Mini Reason: Towny bypass
+IC2_ITEMTOOLMININGLASER:
+    Name: Mining Laser
+    Source Mod: IndustrialCraft2
+    MineTweaker Name: "IC2:itemToolMiningLaser"
+    Restrict Level: NONE
+    
+    Check Towny: true
+    Towny Radius: 8
+    Mini Reason: Towny bypass
+"IC2_BLOCKMACHINE:7":
+    Name: Miner
+    Source Mod: IndustrialCraft2
+    MineTweaker Name: "IC2:blockMachine"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+"THAUMCRAFT_BLOCKWOODENDEVICE:4":
+    Name: Arcane Bore Base
+    Source Mod: Thaumcraft
+    MineTweaker Name: "Thaumcraft:blockWoodenDevice"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+"THAUMCRAFT_BLOCKWOODENDEVICE:5":
+    Name: Arcane Bore
+    Source Mod: Thaumcraft
+    MineTweaker Name: "Thaumcraft:blockWoodenDevice"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+AWWAYOFTIME_ENERGYBLASTER:
+    Name: Energy Blaster
+    Source Mod: BloodMagic
+    MineTweaker Name: "AWWayofTime:energyBlaster"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+AWWAYOFTIME_ENERGYBAZOOKA:
+    Name: Energy Blaster
+    Source Mod: BloodMagic
+    MineTweaker Name: "AWWayofTime:energyBazooka"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+RAILCRAFT_CARTBORE:
+    Name: Tunnel Bore
+    Source Mod: Railcraft
+    MineTweaker Name: "Railcraft:cart.bore"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+IC2_BLOCKNUKE:
+    Name: Nuke
+    Source Mod: IndustrialCraft2
+    MineTweaker Name: "IC2:blockNuke"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+        - DIM1
+    Mini Reason: Towny bypass
+COMPUTERCRAFT_CCTURTLE:
+    Name: Turtle
+    Source Mod: Computercraft
+    MineTweaker Name: "ComputerCraft:CC-Turtle"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+COMPUTERCRAFT_CCTURTLEADVANCED:
+    Name: Advanced Turtle
+    Source Mod: Computercraft
+    MineTweaker Name: "ComputerCraft:CC-TurtleAdvanced"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+COMPUTERCRAFT_CCTURTLEEXPANDED:
+    Name: Expanded Turtle
+    Source Mod: Computercraft
+    MineTweaker Name: "ComputerCraft:CC-TurtleExpanded"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+"MINEFACTORYRELOADED_MACHINE2:7":
+    Name: Block Placer
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:machine.2"
+    Restrict Level: BAN
+    
+    Mini Reason: "Towny & Regulator bypass"
+"TWILIGHTFOREST_TILETFTOWERDEVICE:12":
+    Name: Carminite Reactor
+    Source Mod: TwilightForest
+    MineTweaker Name: "TwilightForest:tile.TFTowerTranslucent"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+DRACONICEVOLUTION_DRACONICSHOVEL:
+    Name: Draconic Shovel
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:draconicShovel"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+DRACONICEVOLUTION_DRACONICPICKAXE:
+    Name: Draconic Pickaxe
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:draconicPickaxe"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+DRACONICEVOLUTION_DRACONICDISTRUCTIONSTAFF:
+    Name: Staff of Power
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:draconicDistructionStaff"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+TWILIGHTFOREST_ITEMCHAINBLOCK:
+    Name: Block and Chain
+    Source Mod: TwilightForest
+    MineTweaker Name: "TwilightForest:item.chainBlock"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+IC2_BLOCKITNT:
+    Name: Industrial TNT
+    Source Mod: IndustrialCraft2
+    MineTweaker Name: "IC2:blockITNT"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 5
+    Mini Reason: Towny bypass
+DRACONICEVOLUTION_CHAOSCRYSTAL:
+    Name: Chaos Crystal
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:chaosCrystal"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+THAUMICENERGISTICS_FOCUSAEWRENCH:
+    Name: "Wand Focus: AE Wrench"
+    Source Mod: ThaumicTinker
+    MineTweaker Name: "thaumicenergistics:focus.aewrench"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+"MINEFACTORYRELOADED_MACHINE0:7":
+    Name: Block Breaker
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:machine.0"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 1
+    Mini Reason: Towny bypass
+THAUMICTINKERER_FIREAIR:
+    Name: Thaumic Fire
+    Source Mod: ThaumicTinkerer
+    MineTweaker Name: "ThaumicTinkerer:fireAir"
+    Restrict Level: BAN
+THAUMICTINKERER_FIREFIRE:
+    Name: Thaumic Fire
+    Source Mod: ThaumicTinkerer
+    MineTweaker Name: "ThaumicTinkerer:fireFire"
+    Restrict Level: BAN
+    Mini Reason: Global bypass
+THAUMICTINKERER_FIREORDER:
+    Name: Thaumic Fire
+    Source Mod: ThaumicTinkerer
+    MineTweaker Name: "ThaumicTinkerer:fireOrder"
+    Restrict Level: BAN
+    Mini Reason: Global bypass
+THAUMICTINKERER_FIRECHAOS:
+    Name: Thaumic Fire
+    Source Mod: ThaumicTinkerer
+    MineTweaker Name: "ThaumicTinkerer:fireChaos"
+    Restrict Level: BAN
+    Mini Reason: Global bypass
+THAUMICTINKERER_FIREEARTH:
+    Name: Thaumic Fire
+    Source Mod: ThaumicTinkerer
+    MineTweaker Name: "ThaumicTinkerer:fireEarth"
+    Restrict Level: BAN
+    Mini Reason: Global bypass
+THAUMICTINKERER_FIREWATER:
+    Name: Thaumic Fire
+    Source Mod: ThaumicTinkerer
+    MineTweaker Name: "ThaumicTinkerer:fireWater"
+    Restrict Level: BAN
+    Mini Reason: Global bypass
+CHISEL_CLOUDINABOTTLE:
+    Name: Cloud in a bottle
+    Source Mod: Chisel
+    MineTweaker Name: "chisel:cloudinabottle"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Global bypass
+"IC2_BLOCKMACHINE2:11":
+    Name: Advanced Miner
+    Source Mod: IndustrialCraft2
+    MineTweaker Name: "IC2:blockMachine2"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+TWILIGHTFOREST_ITEMCUBEOFANNIHILATION:
+    Name: Cube of Annihilation
+    Source Mod: TwilightForest
+    MineTweaker Name: "TwilightForest:item.cubeOfAnnihilation"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Towny bypass
+BUILDCRAFTCORE_MARKERBLOCK:
+    Name: Land Mark
+    Source Mod: BuildCraft
+    MineTweaker Name: "BuildCraft|Core:markerBlock"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 10
+    Mini Reason: Towny bypass
+
+AWWAYOFTIME_BOUNDPICKAXE:
+    Name: Bound Blade
+    Source Mod: "BloodMagic:AlchemicalWizardry"
+    MineTweaker Name: "AWWayofTime:boundPickaxe"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+AWWAYOFTIME_ENERGYSWORD:
+    Name: Bound Pickaxe
+    Source Mod: "BloodMagic:AlchemicalWizardry"
+    MineTweaker Name: "AWWayofTime:energySword"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+AWWAYOFTIME_BOUNDSHOVEL:
+    Name: Bound Shovel
+    Source Mod: "BloodMagic:AlchemicalWizardry"
+    MineTweaker Name: "AWWayofTime:boundShovel"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+AWWAYOFTIME_BOUNDAXE:
+    Name: Bound Axe
+    Source Mod: "BloodMagic:AlchemicalWizardry"
+    MineTweaker Name: "AWWayofTime:boundAxe"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 2
+    Mini Reason: Towny bypass
+AWWAYOFTIME_BLOCKTELEPOSER:
+    Name: Teleposer
+    Source Mod: "BloodMagic:AlchemicalWizardry"
+    MineTweaker Name: "AWWayofTime:blockTeleposer"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 5
+    Mini Reason: World-restriction bypass
+APPLIEDENERGISTICS2_ITEMTOOLNETWORKTOOL:
+    Name: Network Tool
+    Source Mod: AppliedEnergistics2
+    MineTweaker Name: "appliedenergistics2:item.ToolNetworkTool"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 1
+    Mini Reason: Towny bypass
+GRAVISUITE_RELOCATOR:
+  Name: Relocator
+  Restrict Level: RESTRICT
+  World Blacklist: true
+  Blocked Actions:
+    RIGHT_CLICK: true
+"MINEFACTORYRELOADED_RUBBERWOODSAPLING:3":
+    Name: Sacred Rubber Sapling
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:rubberwood.sapling:3"
+    Restrict Level: RESTRICT
+    Log: true
+    World Blacklist: true
+    Worlds:
+      - world
+PORTALGUN_PORTALGUNBLUE:
+    Name: Portal Gun - Blue
+    Source Mod: PortalGun
+    MineTweaker Name: PortalGun:PortalGunBlue
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 3
+    Mini Reason: Towny bypass
+    Log: true
+PORTALGUN_PORTALGUNORANGE:
+    Name: Portal Gun - Orange
+    Source Mod: PortalGun
+    MineTweaker Name: PortalGun:PortalGunOrange
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 3
+    Mini Reason: Towny bypass
+    Log: true
+"TWILIGHTFOREST_TILETFSAPLING:6":
+    Name: Tree of Transformation Sapling
+    Source Mod: TwilightForest
+    MineTweaker Name: TwilightForest:tile.TFSapling
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 1
+    Mini Reason: Towny bypass
+"BOTANIA_SMELTROD:0":
+    Name: Rod of the Molten Core
+    Source Mod: Botania
+    MineTweaker Name: "Botania:smeltRod"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 3
+    Log: true
+    Mini Reason: Towny bypass
+# CHEATING #####################################################################
+STEVESFACTORYMANAGER_BLOCKCABLEBREAKERNAME:
+    Name: Block Gate
+    Source Mod: Steve'sFactoryManager
+    MineTweaker Name: "StevesFactoryManager:BlockCableBreakerName"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+ThaumicTinkerer:fireOrder:
+    Name: Elemental Fire
+    Source Mod: Thaumic Tinker
+    MineTweaker Name: "ThaumicTinkerer:fireOrder"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+ThaumicTinkerer:fireAir:
+    Name: Elemental Fire
+    Source Mod: Thaumic Tinker
+    MineTweaker Name: "ThaumicTinkerer:fireAir"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+ThaumicTinkerer:fireChaos:
+    Name: Elemental Fire
+    Source Mod: Thaumic Tinker
+    MineTweaker Name: "ThaumicTinkerer:fireChaos"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+ThaumicTinkerer:fireWater:
+    Name: Elemental Fire
+    Source Mod: Thaumic Tinker
+    MineTweaker Name: "ThaumicTinkerer:fireWater"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+ThaumicTinkerer:fireEarth:
+    Name: Elemental Fire
+    Source Mod: Thaumic Tinker
+    MineTweaker Name: "ThaumicTinkerer:fireEarth"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+OPENBLOCKS_DEVNULL:
+    Name: /dev/null
+    Source Mod: OpenBlocks
+    MineTweaker Name: "OpenBlocks:devnull"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+BIBLIOCRAFT_BIBLIOWORKBENCH:
+    Name: Fancy Workbench
+    Source Mod: Bibliocraft
+    MineTweaker Name: "BiblioCraft:BiblioWorkbench"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+EXTRAUTILITIES_FILING:
+    Name: Filing Cabinet
+    Source Mod: ExtraUtilities
+    MineTweaker Name: "ExtraUtilities:filing"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+STEVESADDONS_CABLE_AE:
+    Name: Energistics Connector
+    Source Mod: Steve'sAddons
+    MineTweaker Name: "StevesAddons:cable_ae"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+PROJREDTRANSPORTATION_PROJECTREDTRANSPORTATIONROUTINGCHIP:
+    Name: Item Responder chip
+    Source Mod: ProjectRedTransportation
+    MineTweaker Name: "ProjRed|Transportation:projectred.transportation.routingchip"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+PROJREDTRANSPORTATION_PROJECTREDTRANSPORTATIONPIPE:
+    Name: Item Transport pipe
+    Source Mod: ProjectRedTransportation
+    MineTweaker Name: "ProjRed|Transportation:projectred.transportation.pipe"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+THERMALEXPANSION_WORKBENCH:
+    Name: Machinist's Workbench (All)
+    Source Mod: Thermal Expansion
+    MineTweaker Name: "ThermalExpansion:Workbench"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+
+OPENPERIPHERAL_PIM:
+    Name: PIM
+    Source Mod: OpenPeripheralAddons
+    MineTweaker Name: "OpenPeripheral:pim"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+"EXTRAUTILITIES_DECORATIVEBLOCK1:5":
+    Name: Unstable Ingot Block
+    Source Mod: ExtraUtilities
+    MineTweaker Name: "ExtraUtilities:decorativeBlock1"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: "Cheating (X-Ray)"
+DRACONICEVOLUTION_WEATHERCONTROLLER:
+    Name: Weather Controller
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:weatherController"
+    Restrict Level: RESTRICT
+    World Blacklist: true
+    Worlds:
+        - world
+    Mini Reason: Poll Bypass
+"PROJREDEXPANSION_PROJECTREDEXPANSIONMACHINE2:10":
+    Name: ProjectRed Workbench
+    Source Mod: ProjectRedExpansion
+    MineTweaker Name: "ProjRed|Expansion:projectred.expansion.machine2"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+"PROJREDEXPANSION_PROJECTREDEXPANSIONMACHINE2:2":
+    Name: ProjectRed Block Placer
+    Source Mod: ProjectRedExpansion
+    MineTweaker Name: "ProjRed|Expansion:projectred.expansion.machine2"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+"PROJREDEXPANSION_PROJECTREDEXPANSIONMACHINE2:0":
+    Name: ProjectRed Block Breaker
+    Source Mod: ProjectRedExpansion
+    MineTweaker Name: "ProjRed|Expansion:projectred.expansion.machine2"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+RAILCRAFT_MACHINEGAMMA:
+    Name: Cart Dispenser
+    Source Mod: Railcraft
+    MineTweaker Name: "Railcraft:machine.gamma"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+TRANSLOCATOR_CRAFTINGGRID:
+    Name: Crafting Grid
+    Source Mod: Translocator
+    MineTweaker Name: "Translocator:craftingGrid"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+BINNIECORE_FIELDKIT:    
+    Name: Field Kit
+    Source Mod: BinnieCore
+    MineTweaker Name: "BinnieCore:fieldKit"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+OPENBLOCKS_CURSOR:
+    Name: Cursor
+    Source Mod: OpenBlocks
+    MineTweaker Name: "OpenBlocks:cursor"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Duping
+DRACONICEVOLUTION_XRAYBLOCK:
+    Name: Distortion Flame
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:xRayBlock"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: "Cheating (X-Ray)"
+IC2_PLASMALAUNCHER:
+    Name: Plasma Launcher
+    Source Mod: IndustrialCraft2
+    MineTweaker Name: "IC2:plasmaLauncher"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: "Global bypass"
+# CREATIVE ITEMS ###############################################################
+"SIMPLYJETPACKS_FLUXPACKSCOMMON:9001":
+    Name: Creative Flux Pack
+    Source Mod: SimplyJetpacks
+    MineTweaker Name: "simplyjetpacks:fluxpacksCommon"
+    Restrict Level: BAN
+    Log: true
+"SIMPLYJETPACKS_JETPACKSCOMMON:9001":
+    Name: Creative Jetpack
+    Source Mod: SimplyJetpacks
+    MineTweaker Name: "simplyjetpacks:jetpacksCommon"
+    Restrict Level: BAN
+    Log: true
+"THERMALEXPANSION_CACHE:0":
+    Name: Creative Cache
+    Source Mod: ThermalExpansion
+    MineTweaker Name: "ThermalExpansion:Cache"
+    Restrict Level: BAN
+    Log: true
+"THERMALEXPANSION_STRONGBOX:0":
+    Name: Creative Strongbox
+    Source Mod: ThermalExpansion
+    MineTweaker Name: "ThermalExpansion:Strongbox"
+    Restrict Level: BAN
+    Log: true
+"THERMALEXPANSION_TANK:0":
+    Name: Creative Portable Tank
+    Source Mod: ThermalExpansion
+    MineTweaker Name: "ThermalExpansion:Tank"
+    Restrict Level: BAN
+    Log: true
+"THERMALEXPANSION_CELL:0":
+    Name: Creative Energy Cell
+    Source Mod: ThermalExpansion
+    MineTweaker Name: "ThermalExpansion:Cell"
+    Restrict Level: BAN
+    Log: true
+"APPLIEDENERGISTICS2_ITEMITEMCREATIVESTORAGECELL":
+    Name: Creative ME Storage Cell
+    Source Mod: AppliedEnergistics2
+    MineTweaker Name: "appliedenergistics2:item.ItemCreativeStorageCell"
+    Restrict Level: BAN
+    Log: true
+"APPLIEDENERGISTICS2_TILEBLOCKCREATIVEENERGYCCELL":
+    Name: Creative Energy Cell
+    Source Mod: AppliedEnergistics2
+    MineTweaker Name: "appliedenergistics2:tile.BlockCreativeEnergyCell"
+    Restrict Level: BAN
+    Log: true
+"ENDERTECH_ENDERTECHEXCHANGER:0":
+    Name: Creative Exchanger
+    Source Mod: EnderTech
+    MineTweaker Name: "EnderTech:endertech.exchanger"
+    Restrict Level: BAN
+    Log: true
+"COMMAND":
+    Name: Command Block
+    Source Mod: Minecraft
+    MineTweaker Name: "minecraft:command_block"
+    Restrict Level: BAN
+    Log: true
+
+
+# SERVER PERFORMANCE ###########################################################
+"RAILCRAFT_MACHINEALPHA:2":
+    Name: Personal Anchor
+    Source Mod: Railcraft
+    MineTweaker Name: "Railcraft:machine.alpha"
+    Count Block: true
+    Limit:
+        Default: 1
+        VIP0: 2
+        VIP1: 4
+        VIP2: 5
+        VIP3: 6
+    Mini Reason: Server performance
+"DRACONICEVOLUTION_CUSTOMSPAWNER:0":
+    Name: Stabilized Mob Spawner
+    Source Mod: DraconicEvolution
+    MineTweaker Name: "DraconicEvolution:customSpawner"
+    Count Block: true
+    Limit:
+        Default: 1
+        VIP0: 1
+        VIP1: 2
+        VIP2: 2
+        VIP3: 2
+    Mini Reason: Server performance
+EXTRAUTILITIES_ENDERTHERMICPUMP:
+    Name: Ender-Thermic Pump
+    Source Mod: EnderIO
+    MineTweaker Name: "ExtraUtilities:enderThermicPump"
+    Count Block: true
+    Limit:
+        Default: 1
+        VIP0: 2
+        VIP1: 3
+        VIP2: 4
+        VIP3: 5
+    Mini Reason: Server performance
+MINEFACTORYRELOADED_CABLEPLASTIC:
+    Name: MFR Plastic Cable
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:cable.plastic"
+    Restrict Level: BAN
+    Mini Reason: Server crash 
+    Log: true
+MINEFACTORYRELOADED_CABLEREDSTONE:
+    Name: MFR Rednet Cable
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:cable.redstone"
+    Restrict Level: BAN
+    Mini Reason: Server crash 
+    Log: true
+MINEFACTORYRELOADED_TANK:
+    Name: MFR Plastic Tank
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:tank"
+    Restrict Level: BAN
+    Mini Reason: Server crash 
+    Log: true
+"MINEFACTORYRELOADED_MACHINE2:10":
+    Name: MFR Chunk Loader
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:machine.2"
+    Restrict Level: BAN
+    Mini Reason: Chunk loading
+"TWILIGHTFOREST_TILETFTOWERDEVICE:9":
+    Name: AntiBuilder
+    Source Mod: TwilightForest
+    MineTweaker Name: "TwilightForest:tile.TFTowerDevice"
+    Restrict Level: BAN
+    Mini Reason: Non-Functional
+SUPERCRAFTINGFRAME_SUPERITEMFRAME:
+    Name: Super Item Frame
+    Source Mod: SuperCraftingFrames
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Server Crash
+SUPERCRAFTINGFRAME_SUPERVOIDFRAME:
+    Name: Super Void Frame
+    Source Mod: SuperCraftingFrames
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Server Crash
+"MINEFACTORYRELOADED_RUBBERWOODSAPLING:2":
+    Name: Mega Rubber Sapling
+    Source Mod: MineFactoryReloaded
+    MineTweaker Name: "MineFactoryReloaded:rubberwood.sapling"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Server Crash
+RFTOOLS_DIMLETRESEARCHERBLOCK:
+    Name: Dimlet Researcher
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:dimletResearcherBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+RFTOOLS_DIMLETWORKBENCHBLOCK:
+    Name: Dimlet Workbench
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:dimletWorkbenchBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+RFTOOLS_DIMENSIONENSCRIBERBLOCK:
+    Name: Dimension Enscriber
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:dimensionEnscriberBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+RFTOOLS_DIMENSIONBUILDERBLOCK:
+    Name: Dimention Builder
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:dimensionBuilderBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+RFTOOLS_DIMENSIONEDITORBLOCK:
+    Name: Dimention Editor
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:dimensionEditorBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+RFTOOLS_MATERIALABSORBERBLOCK:
+    Name: Material Absorber
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:materialAbsorberBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+RFTOOLS_LIQUIDABSORBERBLOCK:
+    Name: Liquid Absorber
+    Source Mod: RFTools
+    MineTweaker Name: "rftools:liquidAbsorberBlock"
+    Restrict Level: BAN
+    Mini Reason: World Creation
+"STEVESCARTS_CARTMODULE:49":
+    Name: Steves Carts Chunk Loader
+    Source Mod: StevesCarts
+    MineTweaker Name: "StevesCarts:CartModule"
+    Restrict Level: BAN
+    Mini Reason: Chunk loading
+
+    
+# WITCHERY (Might be fixed eventually, don't count on it) ######################
+"WITCHERY_POPPET:8":
+    Name: Voodoo Poppet
+    Source Mod: Witchery
+    MineTweaker Name: "witchery:poppet"
+    Restrict Level: BAN
+    Log: true
+    Mini Reason: Global Towny bypass
+WITCHERY_TAGLOCKKIT:
+    Name: Taglock Kit
+    Source Mod: Witchery
+    MineTweaker Name: "witchery:taglockkit"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 1
+    Mini Reason: Usage logging.
+WITCHERY_MYSTICBRANCH:
+    Name: Mystic Branch
+    Source Mod: Witchery
+    MineTweaker Name: "witchery:mysticbranch"
+    Restrict Level: NONE
+    Check Towny: true
+    Towny Radius: 3
+    Mini Reason: Towny bypass
