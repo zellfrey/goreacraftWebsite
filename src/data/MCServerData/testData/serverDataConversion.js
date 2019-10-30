@@ -57,17 +57,30 @@ function convertEachFileFromServer(serverFiles){
     console.log("converting files to JSON format")
 
     for(let i = 0; i < serverFiles.length; i ++){
+            //final check for rules file
             if(serverFiles[i].rules){
-                serverFiles[i].rules = convertRulesToObjects(serverFiles[i].rules)
+                console.log(`Rules file exists in ${serverFiles[i].server} folder. Converting...`)
+
+                serverFiles[i].rules = convertRulesToArray(serverFiles[i].rules)
             }
             else{
                 console.log(`Rules file does not exist in ${serverFiles[i].server} folder. Continuing with conversion`)
             }
+            //final check for Restrict List file
+            if(serverFiles[i].bannedItems){
+                console.log(`Restrict List exists in ${serverFiles[i].server} folder. Converting...`)
+
+                serverFiles[i].bannedItems = convertBannedItemsToObjects(serverFiles[i].bannedItems)
+            }
+            else{
+                console.log(`Restrict List file does not exist in ${serverFiles[i].server} folder. Continuing with conversion`)
+            }
+        console.log(serverFiles[i])
     }
 }
 
-// server rules conversion to JSON
-function convertRulesToObjects(rulesFile){
+// server rules conversion to Array
+function convertRulesToArray(rulesFile){
     let rulesArray = [];
     let dataArray = rulesFile.split('\n').map(str => str.replace(COLOUR_CODE_CHECK, ''))
    
@@ -84,7 +97,57 @@ function convertRulesToObjects(rulesFile){
      })
     return rulesArray
 }
+//server banneditems conversion to JSON
+function convertBannedItemsToObjects(bannedItemsFile){
 
+    let bannedItemsArray = []
+    let itemsArray = Object.keys(bannedItemsFile)
+    for(let i = 0; i < itemsArray.length; i++){
+
+        let bItemObject = {}
+        //removes example items from list
+        if(bannedItemsFile[itemsArray[i]] !== bannedItemsFile.DEFAULT_VALUES){
+
+            //checks whether an items is creative or used just for display(which is most likely creative)
+            if(!bannedItemsFile[itemsArray[i]].Name.toLowerCase().includes("creative") && !bannedItemsFile[itemsArray[i]].Name.toLowerCase().match(COLOUR_CODE_CHECK)){
+
+                bItemObject.name = `${bannedItemsFile[itemsArray[i]].Name}`
+
+                //is item banned?
+                if(bannedItemsFile[itemsArray[i]]["Restrict Level"] === "BAN"){
+                    bItemObject.restrictLvl = "Global Ban"
+
+                    //outlier cases checking for reason, gives clarity to user
+                    if(bannedItemsFile[itemsArray[i]]["Mini Reason"]){
+                        bItemObject.reason = bannedItemsFile[itemsArray[i]]["Mini Reason"].replace(COLOUR_CODE_CHECK, "")
+                    }
+                }
+
+                //is item world restricted?
+                else if(bannedItemsFile[itemsArray[i]]["Restrict Level"] === "RESTRICT"){
+                    bItemObject.restrictLvl = "Disabled in Overworld"
+
+                    //outlier cases checking for reason, gives clarity to user
+                    if(bannedItemsFile[itemsArray[i]]["Count Block"]){
+                        bItemObject.limit = bannedItemsFile[itemsArray[i]].Limit
+                    }
+                }
+                //is item limited?
+                else if(bannedItemsFile[itemsArray[i]]["Count Block"]){
+                    bItemObject.restrictLvl = "Limited Placement"
+                    bItemObject.limit = bannedItemsFile[itemsArray[i]].Limit
+                }
+                //does it bypass towny?
+                else if(bannedItemsFile[itemsArray[i]]["Check Towny"]){
+                    bItemObject.restrictLvl = "Towny Bypass"
+
+                }
+                bannedItemsArray.push(bItemObject)
+            }
+        }
+    }
+    return bannedItemsArray
+}
 
 searchServerFolder()
 scanEachServer(serverDirList)
