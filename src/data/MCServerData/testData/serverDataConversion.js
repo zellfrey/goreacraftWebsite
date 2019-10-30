@@ -75,8 +75,20 @@ function convertEachFileFromServer(serverFiles){
             else{
                 console.log(`Restrict List file does not exist in ${serverFiles[i].server} folder. Continuing with conversion`)
             }
-        console.log(serverFiles[i])
+
+            if(serverFiles[i].serverStaff){
+                console.log(`Users file exists in ${serverFiles[i].server} folder. Converting...`)
+
+                serverFiles[i].serverStaff = convertUsersToStaffArray(serverFiles[i].serverStaff)
+            }
+            else{
+                console.log(`Users file does not exist in ${serverFiles[i].server} folder. Continuing with conversion`)
+            }
+        //delete file names array
+        console.log(`Completed file conversion.\nRemoving file names array from ${serverFiles[i].server} object`)
+        delete serverFiles[i].files
     }
+    return serverFiles
 }
 
 // server rules conversion to Array
@@ -148,12 +160,68 @@ function convertBannedItemsToObjects(bannedItemsFile){
     }
     return bannedItemsArray
 }
+//server users file conversion to staff Object List
+function convertUsersToStaffArray(usersFile){
+    const staffRanks = ["Helper", "Mod", "SrMod", "Admin", "Headmin"]
+    let staffList = {
+        "Helper":[],
+        "Mod":[],
+        "SrMod":[],
+        "Admin":[],
+        "Head Admin":null,
+        }
+
+    for(const user in usersFile.users){
+        if(usersFile.users[user].info && usersFile.users[user].info.suffix){
+            let playerName = usersFile.users[user].lastname
+            let playerRank = usersFile.users[user].info.suffix.replace(COLOUR_CODE_CHECK, "").slice(1,-1)
+            
+            if(playerRank.length > 0){
+
+                switch(staffRanks.findIndex(rank => rank.startsWith(playerRank))){
+
+                    //index number corresponds to staff rank. 0 -> 10
+                    case 0:
+                        staffList["Helper"].push(playerName)
+                        break;
+                    case 1:
+                        staffList["Mod"].push(playerName)
+                        break;
+                    case 2:
+                        staffList["SrMod"].push(playerName)
+                        break;
+                    case 3:
+                        staffList["Admin"].push(playerName)
+                        break;
+                    case 4:
+                        staffList["Head Admin"] = playerName
+                        break;
+                    default:        
+                        console.log("no staff rank found")
+                        break;
+                }
+                        
+            }
+
+        }
+
+    }
+    return staffList
+}
+
+function writeServerDataToJSONFile(serverData){
+    fs.writeFileSync('../testData/mcServerData.json', JSON.stringify(serverData, null, '\t'), 'utf8', function(){
+        if(error) throw error;
+        console.log('successfully converted to JSON format')
+    })
+}
 
 searchServerFolder()
 scanEachServer(serverDirList)
 loadFilesFromServerDirectory(serverDataJSON)
 convertEachFileFromServer(serverDataJSON)
-
+console.log(serverDataJSON)
+writeServerDataToJSONFile(serverDataJSON)
 let serverDirObjArray =[
     // {modPack: null,staffList: {},banneditems:[],rules:[],},
     // {modPack: null,staffList: {},banneditems:[],rules:[],},
