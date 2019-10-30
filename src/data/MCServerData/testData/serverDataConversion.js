@@ -4,6 +4,8 @@ const fs = require('fs')
 const yaml = require('js-yaml');
 const path = require('path');
 const ServerDataFldr = "../testData/";
+const COLOUR_CODE_CHECK = /&[0-9A-z]/g
+const RULE_NO_CHECK = /[1-9]?[0-9][.]/g
 
 let serverDirList
 
@@ -19,6 +21,8 @@ function searchServerFolder(){
 };
 
 function scanEachServer(directoryList){
+    console.log("scanning server directories")
+
     directoryList.forEach(function(dir){
         let directoryObj = {server: dir, files: null}
 
@@ -31,6 +35,8 @@ function scanEachServer(directoryList){
 }
 
 function loadFilesFromServerDirectory(serverData){
+    console.log("Moving to file loading within server directories")
+
     serverData.forEach(function(dir){
 
             dir.rules = dir.files.includes('rules.txt') ? 
@@ -47,10 +53,43 @@ function loadFilesFromServerDirectory(serverData){
     return serverData
 }
 
+function convertEachFileFromServer(serverFiles){
+    console.log("converting files to JSON format")
+
+    for(let i = 0; i < serverFiles.length; i ++){
+            if(serverFiles[i].rules){
+                serverFiles[i].rules = convertRulesToObjects(serverFiles[i].rules)
+            }
+            else{
+                console.log(`Rules file does not exist in ${serverFiles[i].server} folder. Continuing with conversion`)
+            }
+    }
+}
+
+// server rules conversion to JSON
+function convertRulesToObjects(rulesFile){
+    let rulesArray = [];
+    let dataArray = rulesFile.split('\n').map(str => str.replace(COLOUR_CODE_CHECK, ''))
+   
+    let rulesOnlyList = dataArray.filter(line => line.match(RULE_NO_CHECK))
+
+    rulesOnlyList.map(rule =>{
+        let dotIndex = rule.indexOf('.')
+        
+        if(rule.includes('\r')){
+            rulesArray.push(rule.slice(dotIndex+2,-1))
+        }else{
+            rulesArray.push(rule.slice(dotIndex+2))
+        }
+     })
+    return rulesArray
+}
+
 
 searchServerFolder()
 scanEachServer(serverDirList)
 loadFilesFromServerDirectory(serverDataJSON)
+convertEachFileFromServer(serverDataJSON)
 
 let serverDirObjArray =[
     // {modPack: null,staffList: {},banneditems:[],rules:[],},

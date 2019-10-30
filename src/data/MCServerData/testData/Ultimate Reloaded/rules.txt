@@ -8,9 +8,9 @@
 
 &bAdditional details can be found on Discord > #server-info
 &e&l7. &rDo not advertise other servers in public chat.
-&6&l8. &r&7 Do not pester staff for ranks, items, or other unfair advantages
+&6&l8. &r&7Do not pester staff for ranks, items, or other unfair advantages
 &e&l9. &rDo not intentionally undermine the economy.
-&6&l10. &r&7Do not bypass or work around protection or restriction plugins..
+&6&l10. &r&7Do not bypass or work around protection or restriction plugins.
 &e&l11. &rStaff is not responsible for retrieving dead players items.
 &6&l12. &r&7Do not automate weather or time changes.
 &e&l13. &rDo not bypass the AFK timer kick.
