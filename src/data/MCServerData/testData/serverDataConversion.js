@@ -21,13 +21,15 @@ function searchServerFolder(){
 };
 
 function scanEachServer(directoryList){
-    console.log("scanning server directories")
+    console.log("\n----Scanning server directories----\n")
 
     directoryList.forEach(function(dir){
         let directoryObj = {server: dir, files: null}
 
         directoryObj.files = fs.readdirSync(dir).filter((file) => fs.lstatSync(path.join(dir, file)).isFile());
-
+        
+        console.log("Found " + directoryObj.files.length + ` in ${dir} folder.`)
+        
         serverDataJSON.push(directoryObj)
         
     })
@@ -35,28 +37,43 @@ function scanEachServer(directoryList){
 }
 
 function loadFilesFromServerDirectory(serverData){
-    console.log("Moving to file loading within server directories")
+    console.log("\n----Moving to file loading within server directories----\n")
 
     serverData.forEach(function(dir){
 
-            dir.rules = dir.files.includes('rules.txt') ? 
-                        fs.readFileSync(`./${dir.server}/` +'rules.txt', {encoding: 'utf-8'})
+            dir.navData = dir.files.includes('navData.yml') ? 
+                        yaml.safeLoad(fs.readFileSync(`./${dir.server}/navData.yml`, {encoding: 'utf-8'})) 
                         : null
 
-            dir.bannedItems = dir.files.includes('Restrict List.yml') ? 
-                        yaml.safeLoad(fs.readFileSync(`./${dir.server}/Restrict List.yml`, {encoding: 'utf-8'})) 
-                        : null
+            if(dir.navData){
+                console.log(`./${dir.server}/navData.yml was found. Continuing to read other files`)
 
-            dir.serverStaff = dir.files.includes('users.yml') ? yaml.safeLoad(fs.readFileSync(`./${dir.server}/users.yml`, {encoding: 'utf-8'})) 
-                        : null
+                dir.rules = dir.files.includes('rules.txt') ? 
+                            fs.readFileSync(`./${dir.server}/` +'rules.txt', {encoding: 'utf-8'})
+                            : null
+    
+                dir.bannedItems = dir.files.includes('Restrict List.yml') ? 
+                            yaml.safeLoad(fs.readFileSync(`./${dir.server}/Restrict List.yml`, {encoding: 'utf-8'})) 
+                            : null
+    
+                dir.serverStaff = dir.files.includes('users.yml') ? yaml.safeLoad(fs.readFileSync(`./${dir.server}/users.yml`, {encoding: 'utf-8'})) 
+                            : null
+            }
+            else{
+                console.log(`./${dir.server}/navData.yml was not found. Server data will not be added to list`)
+            }
     })
     return serverData
 }
 
 function convertEachFileFromServer(serverFiles){
-    console.log("converting files to JSON format")
+    console.log("\n----Converting files to JSON format----\n")
 
     for(let i = 0; i < serverFiles.length; i ++){
+        if(serverFiles[i].navData){
+
+            console.log(`navData file exists in ${serverFiles[i].server} folder. Continuing with conversion`)
+
             //final check for rules file
             if(serverFiles[i].rules){
                 console.log(`Rules file exists in ${serverFiles[i].server} folder. Converting...`)
@@ -84,9 +101,14 @@ function convertEachFileFromServer(serverFiles){
             else{
                 console.log(`Users file does not exist in ${serverFiles[i].server} folder. Continuing with conversion`)
             }
-        //delete file names array
-        console.log(`Completed file conversion.\nRemoving file names array from ${serverFiles[i].server} object`)
-        delete serverFiles[i].files
+            //delete file names array
+            console.log(`Completed file conversion for ${serverFiles[i].server}.\nRemoving file names array from ${serverFiles[i].server} object`)
+            delete serverFiles[i].files
+            
+        }else{
+            console.log(`navData file does NOT exist in ${serverFiles[i].server} folder. Removing from list`)
+        }
+
     }
     return serverFiles
 }
@@ -210,7 +232,10 @@ function convertUsersToStaffArray(usersFile){
 }
 
 function writeServerDataToJSONFile(serverData){
-    fs.writeFileSync('../testData/mcServerData.json', JSON.stringify(serverData, null, '\t'), 'utf8', function(){
+    //filter serverData if navData does not exist
+    let filteredData = serverData.filter(ser => ser.navData != null)
+
+    fs.writeFileSync('../testData/mcServerData.json', JSON.stringify(filteredData, null, '\t'), 'utf8', function(){
         if(error) throw error;
         console.log('successfully converted to JSON format')
     })
@@ -220,11 +245,6 @@ searchServerFolder()
 scanEachServer(serverDirList)
 loadFilesFromServerDirectory(serverDataJSON)
 convertEachFileFromServer(serverDataJSON)
-console.log(serverDataJSON)
 writeServerDataToJSONFile(serverDataJSON)
-let serverDirObjArray =[
-    // {modPack: null,staffList: {},banneditems:[],rules:[],},
-    // {modPack: null,staffList: {},banneditems:[],rules:[],},
-    // {modPack: null,staffList: {},banneditems:[],rules:[],},
-]
+
 
