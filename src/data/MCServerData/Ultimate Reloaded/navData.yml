@@ -1,0 +1,26 @@
+--- 
+modPack: FTB Ultimate Reloaded
+packAddress: 
+  - Ultimate Reloaded v1.8.0
+  - https://www.feed-the-beast.com/projects/ftb-ultimate-reloaded/files/2746965
+serverIP: ultimate.goreacraft.com
+port: 25577
+visible: true
+voteLinks: 
+  - https://minecraft-mp.com/server/227841/vote/
+  - https://ftbservers.com/server/EMWd10Iw/vote
+
+
+# modPack: Modpack Name(will display exact name on website)
+# packAddress: 
+#   - Modpack Name + version number
+#   - Address link to modpack download
+# serverIP: ultimate.goreacraft.com
+# port: server port(This is used to query the server)
+# visible: boolean(will show server on website list)
+# voteLinks: 
+#   - vote 1
+#   - vote 2
+
+#If some of the information is missing, there will be display & functionality problems on the website
+#For more information contact Beardedflea on Discord
