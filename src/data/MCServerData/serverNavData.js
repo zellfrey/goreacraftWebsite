@@ -28,16 +28,4 @@ let ftbServers = [
 module.exports ={
     ftbServers
 }
-// {
-//     modPack: "Official display name",
-//     serverIP: "server address for Goreacraft servers",
-//     packAddress: [
-//         "modpack name + version",
-//         "website address forwarding to modpack and it's version"
-//     ],
-//     voteLinks:["link1",
-//     "link2"
-//     ]
-// },
-
 
