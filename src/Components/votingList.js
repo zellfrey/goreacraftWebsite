@@ -1,9 +1,8 @@
 import React from 'react';
-import serverData from '../data/MCServerData/serverNavData.js';
 import '../Styles/MainNavBar.css'
 
 
-const VotingList = () =>{
+const VotingList = (props) =>{
 
     const getHostName = (url)  => {
         var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
@@ -19,12 +18,12 @@ const VotingList = () =>{
         <li><a href="#">Vote</a>
             <ul>
             {
-            serverData.ftbServers.map((ftb, idx)=>{
-                return ftb.visible ? (
-                <li key={idx}><a href="#">{ftb.modPack}</a>
+            props.mcData.map((ftb, idx)=>{
+                return ftb.navData.visible ? (
+                <li key={idx}><a href="#">{ftb.navData.modPack}</a>
                     <ul>
-                        <li><a href={ftb.voteLinks[0]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.voteLinks[0])}</a></li>
-                        <li><a href={ftb.voteLinks[1]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.voteLinks[1])}</a></li>
+                        <li><a href={ftb.navData.voteLinks[0]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.navData.voteLinks[0])}</a></li>
+                        <li><a href={ftb.navData.voteLinks[1]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.navData.voteLinks[1])}</a></li>
                     </ul>
                 </li>
                 ) : null;

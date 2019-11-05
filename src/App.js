@@ -6,9 +6,7 @@ import DiscordWidget from './Components/DiscordWidget.js';
 import ServerWiki from './Components/ServerWiki.js'
 import './Styles/MainNavBar.css';
 import articlesData from './data/dummyArticleData.js';
-import serverRulesData from './data/MCServerData/serverDataJSON/serverRules.json'
-import serverBIData from './data/MCServerData/serverDataJSON/serverBannedItems.json'
-import serverStaffData from './data/MCServerData/serverDataJSON/serverStaffList.json'
+import serverData from './data/MCServerData/mcServerData.json';
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
 var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
@@ -25,9 +23,7 @@ export default class App extends React.Component{
       userMC: null,
       infinityPing: null,
       ultimatePing: null,
-      bannedItems: serverBIData,
-      rules: serverRulesData,
-      staff: serverStaffData,
+      mcServerData: serverData,
       articlesArray: articlesData.articles.filter(a => a.visible === true),
     }
   }
@@ -70,8 +66,8 @@ export default class App extends React.Component{
           </div>
           <nav>
             <ul className="nav">
-            <ServerList copyValue={this.copyToClipboard}/>
-            <VotingList/>
+            <ServerList copyValue={this.copyToClipboard} mcData={this.state.mcServerData}/>
+            <VotingList mcData={this.state.mcServerData}/>
             <DiscordWidget/>
             </ul>
           </nav>
