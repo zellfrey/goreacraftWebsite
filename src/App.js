@@ -52,6 +52,11 @@ export default class App extends React.Component{
       alert('unable to copy text');
     }
   }
+
+  getServerName = (e) =>{
+    console.log(e.target.getAttribute('id'))
+    // return null
+  }
   
   render(){
     return (
@@ -66,7 +71,7 @@ export default class App extends React.Component{
           </div>
           <nav>
             <ul className="nav">
-            <ServerList copyValue={this.copyToClipboard} mcData={this.state.mcServerData}/>
+            <ServerList copyValue={this.copyToClipboard} mcData={this.state.mcServerData} getServerName={this.getServerName}/>
             <VotingList mcData={this.state.mcServerData}/>
             <DiscordWidget/>
             </ul>
