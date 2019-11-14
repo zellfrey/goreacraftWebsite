@@ -5,11 +5,10 @@ const ServerRules = (props) =>{
         <div>
             Rules
             <div>
-                {/* <ul>{props.modPackRules[0].modPack}</ul> */}
-                {/* {props.modPackRules[0].rules.map((rl, idx)=>{
+                {props.modPackRules.map((rl, idx)=>{
                     return(
-                        <li key={idx}>{rl.num}{rl.desc}</li>)
-                })} */}
+                        <li key={idx}>{idx+1}. {rl}</li>)
+                })}
             </div>
         </div>
     )

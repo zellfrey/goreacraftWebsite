@@ -1,9 +1,6 @@
 import React from 'react';
-import VotingList from './Components/votingList.js';
-import ServerList from './Components/serverList.js';
-import HomePage from './Components/homePage.js';
+import { VotingList, ServerNavList, HomePage, MCServersList } from './Components';
 import DiscordWidget from './Components/DiscordWidget.js';
-import ServerWiki from './Components/ServerWiki.js'
 import './Styles/MainNavBar.css';
 import articlesData from './data/dummyArticleData.js';
 import serverData from './data/MCServerData/mcServerData.json';
@@ -64,14 +61,14 @@ export default class App extends React.Component{
         <div className="navBarleft">
           <h1>Gallery</h1>
           <h1>Donate</h1>
-          <ServerWiki rules={this.state.rules}/>
+          <MCServersList mcData={this.state.mcServerData}/>
         </div>
           <div>
             <HomePage articles={this.state.articlesArray}/>
           </div>
           <nav>
             <ul className="nav">
-            <ServerList copyValue={this.copyToClipboard} mcData={this.state.mcServerData} getServerName={this.getServerName}/>
+            <ServerNavList copyValue={this.copyToClipboard} mcData={this.state.mcServerData} getServerName={this.getServerName}/>
             <VotingList mcData={this.state.mcServerData}/>
             <DiscordWidget/>
             </ul>
@@ -83,7 +80,6 @@ export default class App extends React.Component{
 
 
 // import React, { useState, useEffect } from 'react';
-// import { VotingList, ServerList, HomePage } from './Components';
 // import ServerData from './data/serverNavData';
 // // import './Styles/Navbar.css'
 
