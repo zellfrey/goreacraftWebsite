@@ -1,9 +1,17 @@
 import React from 'react';
 
-const MCServerCardRules = () =>{
+const MCServerCardRules = (props) =>{
 
     return (
-        <li>Rules</li>
+        <div>
+            Rules
+            <div>
+                {props.rules.map((rl, idx)=>{
+                    return(
+                        <li key={idx}>{idx+1}. {rl}</li>)
+                })}
+            </div>
+        </div>
     )
 }
 
