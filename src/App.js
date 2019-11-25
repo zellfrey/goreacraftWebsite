@@ -6,8 +6,7 @@ import articlesData from './data/dummyArticleData.js';
 import serverData from './data/MCServerData/mcServerData.json';
 
 var userName = 'https://api.minetools.eu/profile/ec1375dca6fc42f8ba3e4ebf4614de4c';
-var statInfinity = 'https://api.minetools.eu/query/infinity.goreacraft.com/25567';
-var statUltimate = 'https://api.minetools.eu/query/145.239.6.135/25577';
+const PLAYER_STAT_SERVER = 'https://api.minetools.eu/query/145.239.6.135/';
 
 //https://api.minetools.eu/
 
@@ -18,8 +17,7 @@ export default class App extends React.Component{
     this.state={
       page: '',
       userMC: null,
-      infinityPing: null,
-      ultimatePing: null,
+      serverPingList: null,
       mcServerData: serverData,
       articlesArray: articlesData.articles.filter(a => a.visible === true),
     }
@@ -27,8 +25,30 @@ export default class App extends React.Component{
 
   componentDidMount() {
       fetch(userName).then(resp => resp.json()).then(status => this.setState({userMC: status}))
-      fetch(statInfinity).then(resp => resp.json()).then(serverState => this.setState({infinityPing: serverState}))
-      fetch(statUltimate).then(resp => resp.json()).then(serverState => this.setState({ultimatePing: serverState}))
+      this.addServerPingToServerData(serverData)
+  }
+
+
+  fetchServerPing = (serverID,portNum) =>{
+    let serverPing={
+      server: serverID,
+      currentPlayerCount: 0,
+      maxPlayerCount: 0,
+      serverStatus: null
+    }
+    fetch(PLAYER_STAT_SERVER+portNum).then(resp =>resp.json())
+              .then(serverState=>{
+                serverPing.currentPlayerCount = serverState.Players
+                serverPing.maxPlayerCount = serverState.MaxPlayers
+                serverPing.serverStatus = serverState.status
+              }) 
+    return serverPing
+  }
+
+  addServerPingToServerData = (data) =>{
+    let serverPingArray = []
+    data.map(ftb =>{serverPingArray.push(this.fetchServerPing(ftb.server,ftb.navData.port))})
+    return this.setState({serverPingList: serverPingArray})
   }
 
   copyToClipboard = (e) => {
@@ -61,7 +81,7 @@ export default class App extends React.Component{
         <div className="navBarleft">
           <h1>Gallery</h1>
           <h1>Donate</h1>
-          <MCServersList mcData={this.state.mcServerData}/>
+          <MCServersList mcData={this.state.mcServerData} copyToClipboard={this.copyToClipboard} serverPingList={this.state.serverPingList}/>
         </div>
           <div>
             <HomePage articles={this.state.articlesArray}/>

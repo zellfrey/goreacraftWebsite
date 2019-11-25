@@ -5,12 +5,15 @@ import MCServerCardRules from './MCServerCardRules'
 import MCServerCardStaff from './MCServerCardStaff'
 import MCServerCardTabSelect from './MCServerCardTabSelect'
 
+
 const MCServerCard = (props) =>{
+
+    
 
     const renderSelectedTab = ()  => {
         switch(props.serverTab) {
             case "navData":
-                return (<MCServerCardInfo info={props.serverInfo.navData}/>)
+                return (<MCServerCardInfo navData={props.serverInfo.navData} copyValue={props.copyToClipboard} pingData={props.serverPing}/>)
             case "rules":
                 return (<MCServerCardRules rules={props.serverInfo.rules}/>)
             case "bannedItems":
@@ -18,7 +21,7 @@ const MCServerCard = (props) =>{
             case "staff":
                 return (<MCServerCardStaff staff={props.serverInfo.serverStaff}/>)
             default:
-                return (<MCServerCardInfo info={props.serverInfo.navData}/>)
+                return (<MCServerCardInfo navData={props.serverInfo.navData} copyValue={props.copyToClipboard} pingData={props.serverPing}/>)
           }
     }
 
@@ -26,10 +29,6 @@ const MCServerCard = (props) =>{
         <div>
             <MCServerCardTabSelect serverTabSelect={props.serverTabSelect}/>
             {renderSelectedTab()}
-            {/* <MCServerCardInfo info={props.serverInfo.navData}/>
-            <MCServerCardRules rules={props.serverInfo.rules}/>
-            <MCServerCardRestrictList bannedItems={props.serverInfo.bannedItems}/>
-            <MCServerCardStaff staff={props.serverInfo.serverStaff}/> */}
         </div>
     )
 }

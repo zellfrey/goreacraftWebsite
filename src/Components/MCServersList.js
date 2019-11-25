@@ -8,7 +8,13 @@ export default class MCServersList extends React.Component{
     super(props);
     this.state={
       data: this.props.mcData,
-      serverTab: null
+      serverTab: null,
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.serverPingList !== prevProps.serverPingList) {
+      this.renderMCServerCards()
     }
   }
 
@@ -16,13 +22,18 @@ export default class MCServersList extends React.Component{
 
   renderMCServerCards = () =>{
     const mcServerCards = this.state.data.map((ftb, idx)=>{
-      return <MCServerCard 
-                key={idx} 
-                id={ftb.server} 
-                serverInfo={ftb}
-                serverTab={this.state.serverTab}
-                serverTabSelect={this.serverTabSelect}/>
-    })
+        let pingData = this.props.serverPingList === null ? null : this.props.serverPingList.filter(pingData => pingData.server === ftb.server)
+
+          return <MCServerCard 
+                    key={idx} 
+                    id={ftb.server} 
+                    serverInfo={ftb}
+                    serverPing={pingData}
+                    serverTab={this.state.serverTab}
+                    serverTabSelect={this.serverTabSelect}
+                    copyToClipboard={this.props.copyToClipboard}/>
+        
+        })
     return mcServerCards
   }
 
