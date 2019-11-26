@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ServerList = (props) =>{
+const ServerNavList = (props) =>{
 
     return (
         <li><a href="#">Servers</a>
@@ -23,4 +23,4 @@ const ServerList = (props) =>{
     )
 }
 
-export default ServerList;
+export default ServerNavList;

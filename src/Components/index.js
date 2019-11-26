@@ -1,5 +1,5 @@
 import HomePage from './homePage';
-import ServerList from './serverList';
+import ServerNavList from './ServerNavList';
 import VotingList from './votingList';
-
-export { HomePage, ServerList, VotingList };
+import MCServersList from './MCServersList.js'
+export { HomePage, ServerNavList, VotingList, MCServersList };

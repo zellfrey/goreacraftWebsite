@@ -20,7 +20,8 @@ const VotingList = (props) =>{
             {
             props.mcData.map((ftb, idx)=>{
                 return ftb.navData.visible ? (
-                <li key={idx}><a href="#">{ftb.navData.modPack}</a>
+                <li key={idx}>
+                    <a href="#">{ftb.navData.modPack}</a>
                     <ul>
                         <li><a href={ftb.navData.voteLinks[0]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.navData.voteLinks[0])}</a></li>
                         <li><a href={ftb.navData.voteLinks[1]} target="_blank" rel="noopener noreferrer" >{getHostName(ftb.navData.voteLinks[1])}</a></li>
