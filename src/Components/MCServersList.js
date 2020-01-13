@@ -16,25 +16,30 @@ export default class MCServersList extends React.Component{
     if (this.props.serverPingList !== prevProps.serverPingList) {
       this.renderMCServerCards()
     }
+    else if (this.props.mcCardIdShow !== prevProps.mcCardIdShow) {
+      this.setState({serverTab: null})
+    }
   }
 
   serverTabSelect = (e)  => {this.setState({serverTab: e.target.getAttribute('id')})}
 
+  
   renderMCServerCards = () =>{
-    const mcServerCards = this.state.data.map((ftb, idx)=>{
-        let pingData = this.props.serverPingList === null ? null : this.props.serverPingList.filter(pingData => pingData.server === ftb.server)
+    if(this.props.mcCardIdShow === null){
+      return null
 
-          return <MCServerCard 
-                    key={idx} 
-                    id={ftb.server} 
-                    serverInfo={ftb}
-                    serverPing={pingData}
-                    serverTab={this.state.serverTab}
-                    serverTabSelect={this.serverTabSelect}
-                    copyToClipboard={this.props.copyToClipboard}/>
-        
-        })
-    return mcServerCards
+    }else{
+
+      const mcServerCard = this.state.data.find(ftb => ftb.server === this.props.mcCardIdShow)
+      // let pingData = this.props.serverPingList === null ? null : this.props.serverPingList.filter(pingData => pingData.server === ftb.server)
+      return <MCServerCard 
+                id={mcServerCard.server} 
+                serverInfo={mcServerCard}
+                // serverPing={pingData}
+                serverTab={this.state.serverTab}
+                serverTabSelect={this.serverTabSelect}
+                copyToClipboard={this.props.copyToClipboard}/>
+    }
   }
 
   render(){

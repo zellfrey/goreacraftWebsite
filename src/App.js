@@ -15,7 +15,8 @@ export default class App extends React.Component{
   constructor(){
     super();
     this.state={
-      page: '',
+      pageShow: null,
+      mcCardId: null,
       userMC: null,
       serverPingList: null,
       mcServerData: serverData,
@@ -71,7 +72,11 @@ export default class App extends React.Component{
   }
 
   getServerName = (e) =>{
-    console.log(e.target.getAttribute('id'))
+    console.log(e.target.className, e.target.getAttribute('id'))
+    
+    const serverIDSelect = e.target.getAttribute('id')
+    // this.setState(pageShow: )
+    return this.setState({mcCardId: serverIDSelect})
     // return null
   }
   
@@ -81,7 +86,11 @@ export default class App extends React.Component{
         <div className="navBarleft">
           <h1>Gallery</h1>
           <h1>Donate</h1>
-          <MCServersList mcData={this.state.mcServerData} copyToClipboard={this.copyToClipboard} serverPingList={this.state.serverPingList}/>
+          <MCServersList 
+            mcData={this.state.mcServerData} 
+            copyToClipboard={this.copyToClipboard} 
+            serverPingList={this.state.serverPingList}
+            mcCardIdShow={this.state.mcCardId}/>
         </div>
           <div>
             <HomePage articles={this.state.articlesArray}/>

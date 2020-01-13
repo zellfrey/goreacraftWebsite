@@ -37,7 +37,7 @@ const MCServerCardInfo = (props) =>{
                     <li>Info</li>
                     <li>{props.navData.modPack}</li>
                     <img src="" alt="Modpack Image" height="42" width="42"></img>
-                    {getPingData(props.pingData)}
+                    {/* {getPingData(props.pingData)} */}
                     <button onClick={props.copyValue} value={props.navData.serverIP} id={props.navData.serverIP}>{props.navData.serverIP}</button>
                 </div>
                 <div>
